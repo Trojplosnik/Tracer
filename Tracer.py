@@ -5,7 +5,7 @@ import subprocess
 import re
 
 
-def get_info(ip="127.0.0.1"):
+def get_info(ip):
     try:
         response = requests.get(url="http://ip-api.com/json/" + ip).json()
         if response.get('status') == "success":
