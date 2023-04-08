@@ -12,7 +12,7 @@ def get_info(ip):
             return [response.get('as').split(" ")[0],
                     response.get('country'), response.get('isp')]
         else:
-            return response.get('message')
+            return [response.get('message')]
     except requests.exceptions.ConnectionError:
         print("ConnectionError")
 
@@ -28,23 +28,25 @@ def main():
         except subprocess.CalledProcessError:
             print("Something wrong in subprocess tracert.\n"
                   "You may have entered a non-existent domain name or IP.")
-            return
+            return []
         tracertIPs = re.findall(reg, tracert_out)
         if tracertIPs:
             result = dict()
             print("N |     IP     |     AS     | COUNTRY | ISP")
             for ip in tracertIPs:
-                result[ip] = get_info(ip=ip[1])
-                if len(result[ip]) == 3:
-                    print(f"{ip[0]} | {ip[1]} | {result[ip][0]} "
-                          f"| {result[ip][1]} | {result[ip][2]}")
+                result[ip[1]] = list(ip) + get_info(ip=ip[1])
+                if len(result[ip[1]]) == 5:
+                    print(f"{ip[0]} | {ip[1]} | {result[ip[1]][2]} "
+                          f"| {result[ip[1]][3]} | {result[ip[1]][4]}")
                 else:
-                    print(f"{ip[0]} | {ip[1]} | {result[ip]}")
+                    print(f"{ip[0]} | {ip[1]} | {result[ip[1]][2]}")
             return result
         else:
             print("Empty trace.")
+            return []
     else:
         print("Wrong input.")
+        return []
 
 
 if __name__ == '__main__':
