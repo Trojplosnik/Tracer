@@ -14,15 +14,18 @@
 
 №1
 
-    Ввод: python Tracer.py vk.com
+    Ввод: python Tracer.py iichan.hk
     
     Вывод:
     N |     IP     |     AS     | COUNTRY | ISP
     1 | 192.168.1.1 | private range
     2 | 95.82.248.1 | AS12668 | Russia | MiraLogic Telecommunication Systems
     3 | 92.242.30.113 | AS12668 | Russia | MiraLogic Telecommunication Systems
-    4 | 178.18.233.16 |  | Russia | Sib-Ural Peering network
-    6 | 87.240.132.72 | AS47541 | Russia | VKONTAKTE SPb Net
+    4 | 195.208.210.247 | AS8492 | Russia | "OBIT" Ltd.
+    5 | 195.208.209.96 | AS8492 | Russia | "OBIT" Ltd.
+    6 | 10.40.133.3 | private range
+    7 | 193.233.63.14 | AS42745 | Argentina | Safe Value Limited
+
 
 
 №2
